@@ -1,4 +1,3 @@
-
 package worker
 
 import (
@@ -10,7 +9,7 @@ import (
 func TestJudgeFloatRejectsNaN(t *testing.T) {
 	cases := []struct {
 		name, expected, actual string
-		want model.Verdict
+		want                   model.Verdict
 	}{
 		{"NaN actual", "3.14", "NaN", model.VerdictWrongAnswer},
 		{"NaN expected", "NaN", "3.14", model.VerdictWrongAnswer},
