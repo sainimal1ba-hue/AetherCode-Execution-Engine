@@ -1,3 +1,4 @@
+
 package worker
 
 import (
@@ -77,10 +78,8 @@ func normalizeOutput(s string) string {
 	wroteAny := false
 
 	flush := func(line string) {
-		if wroteAny {
-			for range pendingNL {
-				b.WriteByte('\n')
-			}
+		for range pendingNL {
+			b.WriteByte('\n')
 		}
 		pendingNL = 0
 		if wroteAny {
@@ -96,9 +95,7 @@ func normalizeOutput(s string) string {
 		}
 		line := s[lineStart:end]
 		if len(line) == 0 {
-			if wroteAny {
-				pendingNL++
-			}
+			pendingNL++
 		} else {
 			flush(line)
 		}
